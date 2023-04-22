@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class NewExpense extends StatefulWidget {
   const NewExpense({super.key});
@@ -16,7 +17,13 @@ class _NewExpenseState extends State<NewExpense> {
 // }
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-
+void _presentDatePicker()
+{
+  final now = DateTime.now();
+  final firstDate = DateTime(now.year-1);
+  
+showDatePicker(context: context, initialDate: initialDate, firstDate: firstDate, lastDate: lastDate)
+}
   @override
   void dispose() {
     //we dispose the controller once the modal is closed or not into function or ekse it would unnecessarily run and keep taking up memory adn will lead to crashing of app
@@ -59,7 +66,7 @@ class _NewExpenseState extends State<NewExpense> {
               children: [
                 const Text("Sected Date"),
                 IconButton(
-                  onPressed: (){},
+                  onPressed: _presentDatePicker,
                   icon:const Icon(Icons.calendar_month,
                   ),
                   )
