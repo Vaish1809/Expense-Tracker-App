@@ -33,21 +33,30 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
   //context its the metadata provided by flutter which has info abt the widgets and position of widgets in ui tree
-  void _openAddExpensesOverlay(){
-showModalBottomSheet(context: context, builder: (ctx) =>const  NewExpense(),
-);
+  void _openAddExpensesOverlay() {
+    showModalBottomSheet(
+     // isScrollControlled: true,//this simply means tht when we press + it will occupy the entire screen
+      context: context,
+      builder: (ctx) =>  NewExpense(onAddExpense: _addExpense),
+    );
   }
+void _addExpense(Expense expense){
+setState(() {
+  _registeredExpenses.add(expense);
+});
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-      AppBar(title: const Text("Expense Tracker App"),
+      appBar: AppBar(
+        title: const Text("Expense Tracker App"),
         actions: [
-        IconButton(onPressed:_openAddExpensesOverlay,
-         icon: const Icon(Icons.add),),
-      ],
+          IconButton(
+            onPressed: _openAddExpensesOverlay,
+            icon: const Icon(Icons.add),
+          ),
+        ],
       ),
-      
       body: Column(
         children: [
           const Text("the chart"),
