@@ -10,10 +10,10 @@ class ExpenseItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         child: Column(
-          //left align text
+          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //use theming in our won widgets using theme
+          
             Text(expense.title, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(
               height: 4,
@@ -21,11 +21,8 @@ class ExpenseItem extends StatelessWidget {
             Row(
               children: [
                 Text(
-                    'INR ${expense.amount.toStringAsFixed(2)}'), //to string fixed is udes whenn we want only a certsin number of digits after decimal
-                const Spacer(), //in any column or row it tells flutter to take all the space required for the upper and the the lower widget in the code
-                //its basically used it we want text in a row to placced left aligned and one text right alined
-                //here it will ledft align the text and right alignt he row
-
+                    'INR ${expense.amount.toStringAsFixed(2)}'), 
+                const Spacer(), 
                 Icon(categoryIcons[expense.category]),
                 const SizedBox(width: 8),
                 Text(expense.fromattedDate),
